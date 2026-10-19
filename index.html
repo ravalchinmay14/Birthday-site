@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#4b1d78">
+  <title>Happy Birthday Chinmay</title>
+  <style>
+    :root {
+      color-scheme: light;
+      font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+      color: #50334c;
+      background: #4b1d78;
+      font-synthesis: none;
+    }
+    * { box-sizing: border-box; }
+    body {
+      min-height: 100svh;
+      margin: 0;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      padding: 24px;
+      background:
+        radial-gradient(ellipse at 50% 48%, rgba(190, 130, 255, .22) 0 12%, transparent 62%),
+        linear-gradient(145deg, #24103f, #542487 52%, #30105c);
+    }
+    .confetti { position: fixed; inset: 0; overflow: hidden; pointer-events: none; }
+    .balloons { position: fixed; inset: 0; overflow: hidden; pointer-events: none; }
+    .balloon {
+      position: absolute;
+      bottom: -12vh;
+      left: var(--x);
+      font-size: var(--size);
+      opacity: .88;
+      filter: drop-shadow(0 5px 8px rgba(20, 0, 40, .22));
+      animation: float-up var(--duration) var(--delay) ease-in infinite;
+    }
+    @keyframes float-up {
+      0% { transform: translate3d(0, 0, 0) rotate(-8deg); }
+      50% { transform: translate3d(24px, -55vh, 0) rotate(8deg); }
+      100% { transform: translate3d(-12px, -120vh, 0) rotate(-5deg); }
+    }
+    .confetti i {
+      position: absolute;
+      top: -12vh;
+      left: var(--x);
+      width: var(--size);
+      height: calc(var(--size) * 1.7);
+      border-radius: 3px;
+      background: var(--color);
+      opacity: .82;
+      transform: rotate(var(--turn));
+      animation: fall var(--duration) var(--delay) linear infinite;
+    }
+    @keyframes fall {
+      0% { transform: translate3d(0, -5vh, 0) rotate(0deg); }
+      100% { transform: translate3d(var(--drift), 115vh, 0) rotate(760deg); }
+    }
+    main {
+      position: relative;
+      z-index: 1;
+      width: min(100%, 620px);
+      padding: clamp(32px, 7vw, 64px) 24px;
+      text-align: center;
+      border: 1px solid rgba(255,255,255,.85);
+      border-radius: 32px;
+      background: rgba(255,255,255,.68);
+      box-shadow: 0 24px 80px rgba(128, 79, 108, .15);
+      backdrop-filter: blur(12px);
+    }
+    .eyebrow { margin: 0 0 14px; color: #b36585; font-size: .78rem; font-weight: 800; letter-spacing: .24em; text-transform: uppercase; }
+    h1 {
+      margin: 0;
+      color: #ffd76a;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(3rem, 11vw, 5.8rem);
+      font-weight: 700;
+      letter-spacing: -.055em;
+      line-height: .98;
+      text-shadow: 0 0 8px rgba(255, 219, 112, .85), 0 0 22px rgba(255, 190, 50, .7), 0 4px 0 rgba(88, 45, 115, .7);
+    }
+    h1 span { display: block; color: #ffe49a; }
+    .cake { position: relative; width: 150px; height: 136px; margin: 38px auto 28px; }
+    .plate { position: absolute; bottom: 0; left: 4px; width: 142px; height: 15px; border-radius: 50%; background: #e7a9c2; box-shadow: 0 5px 0 #d28cae; }
+    .cake-body { position: absolute; bottom: 12px; left: 25px; width: 100px; height: 60px; border-radius: 9px 9px 13px 13px; background: repeating-linear-gradient(to bottom, #ffb7ba 0 13px, #fff2d8 13px 23px); box-shadow: inset -8px 0 rgba(199,95,128,.12); }
+    .icing { position: absolute; bottom: 64px; left: 22px; width: 106px; height: 20px; border-radius: 50% 50% 9px 9px; background: #fff8ed; }
+    .icing::before, .icing::after { content: ""; position: absolute; top: 10px; width: 11px; height: 16px; border-radius: 0 0 9px 9px; background: #fff8ed; }
+    .icing::before { left: 19px; } .icing::after { right: 21px; height: 12px; }
+    .candle { position: absolute; z-index: 1; bottom: 80px; left: 69px; width: 12px; height: 32px; border-radius: 3px 3px 1px 1px; background: repeating-linear-gradient(135deg, #fff 0 5px, #e899b7 5px 9px); }
+    .flame { position: absolute; top: -17px; left: 2px; width: 9px; height: 15px; border-radius: 70% 30% 60% 40%; background: #ffb638; transform: rotate(8deg); box-shadow: 0 0 18px 5px rgba(255,185,68,.34); animation: flicker .8s ease-in-out infinite alternate; }
+    @keyframes flicker { to { transform: rotate(-8deg) scale(.9); } }
+    .message { max-width: 390px; margin: 0 auto 26px; color: #765f73; font-size: clamp(1rem, 3vw, 1.15rem); line-height: 1.7; }
+    .countdown { margin: 0 auto 22px; color: #65448c; font-size: .95rem; font-weight: 700; line-height: 1.6; }
+    button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 54px;
+      padding: 0 27px;
+      border: 0;
+      border-radius: 999px;
+      background: #a64d78;
+      color: white;
+      font: inherit;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 8px 20px rgba(166,77,120,.25);
+      transition: transform .2s, box-shadow .2s, background .2s;
+    }
+    button:hover { transform: translateY(-2px); box-shadow: 0 12px 24px rgba(166,77,120,.32); background: #914064; }
+    button:focus-visible { outline: 3px solid #65448c; outline-offset: 4px; }
+    .note { margin: 17px 0 0; color: #9c8497; font-size: .8rem; }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="confetti" aria-hidden="true" id="confetti"></div>
+  <div class="balloons" aria-hidden="true" id="balloons"></div>
+  <main>
+    <p class="eyebrow">A little celebration just for you</p>
+    <h1>Happy <span>Birthday Chinmay</span></h1>
+    <div class="cake" aria-hidden="true">
+      <div class="candle"><div class="flame"></div></div>
+      <div class="icing"></div><div class="cake-body"></div><div class="plate"></div>
+    </div>
+    <p class="message">May your day be filled with big smiles, sweet surprises, and all the things that make you happiest.</p>
+    <p class="countdown" id="countdown" aria-live="polite"></p>
+    <button type="button" id="musicButton" aria-pressed="false"><span aria-hidden="true">♫</span><span>Play birthday music</span></button>
+    <p class="note" id="musicNote" aria-live="polite">Go on, make a wish!</p>
+  </main>
+  <script>
+    const confetti = document.querySelector("#confetti");
+    const colors = ["#f28eaa", "#f6c85f", "#8ac9a5", "#8bb8e8", "#b49ae2", "#ffad75"];
+    for (let i = 0; i < 64; i++) {
+      const piece = document.createElement("i");
+      piece.style.setProperty("--x", `${Math.random() * 100}%`);
+      piece.style.setProperty("--size", `${5 + Math.random() * 8}px`);
+      piece.style.setProperty("--color", colors[i % colors.length]);
+      piece.style.setProperty("--duration", `${5 + Math.random() * 7}s`);
+      piece.style.setProperty("--delay", `${-Math.random() * 12}s`);
+      piece.style.setProperty("--drift", `${Math.random() * 130 - 65}px`);
+      piece.style.setProperty("--turn", `${Math.random() * 180}deg`);
+      confetti.append(piece);
+    }
+
+    const balloons = document.querySelector("#balloons");
+    const balloonEmojis = ["🎈", "🎈", "🎈", "🎈", "🎈", "🎈"];
+    for (let i = 0; i < balloonEmojis.length; i++) {
+      const balloon = document.createElement("span");
+      balloon.className = "balloon";
+      balloon.textContent = balloonEmojis[i];
+      balloon.style.setProperty("--x", `${8 + Math.random() * 84}%`);
+      balloon.style.setProperty("--size", `${2 + Math.random() * 1.5}rem`);
+      balloon.style.setProperty("--duration", `${14 + Math.random() * 13}s`);
+      balloon.style.setProperty("--delay", `${-Math.random() * 24}s`);
+      balloons.append(balloon);
+    }
+
+    const countdown = document.querySelector("#countdown");
+    const birthYear = 2007;
+    const birthMonth = 4; // May, using zero-based month numbering
+    const birthDay = 14;
+    function updateCountdown() {
+      const now = new Date();
+      let nextBirthday = new Date(now.getFullYear(), birthMonth, birthDay);
+      if (nextBirthday <= now) nextBirthday = new Date(now.getFullYear() + 1, birthMonth, birthDay);
+      const remaining = nextBirthday - now;
+      const days = Math.floor(remaining / 86400000);
+      const hours = Math.floor((remaining % 86400000) / 3600000);
+      const minutes = Math.floor((remaining % 3600000) / 60000);
+      const seconds = Math.floor((remaining % 60000) / 1000);
+      const turns = nextBirthday.getFullYear() - birthYear;
+      countdown.textContent = `Chinmay turns ${turns} in ${days} days, ${hours} hours, ${minutes} minutes, and ${seconds} seconds!`;
+    }
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+
+    // A short birthday fanfare made with the browser's built-in audio engine.
+    const button = document.querySelector("#musicButton");
+    const buttonLabel = button.querySelectorAll("span")[1];
+    const note = document.querySelector("#musicNote");
+    let audio;
+    let timers = [];
+    let playing = false;
+    const melody = [
+      [392, .28], [392, .28], [440, .55], [392, .55], [523, .55], [494, 1],
+      [392, .28], [392, .28], [440, .55], [392, .55], [587, .55], [523, 1],
+      [392, .28], [392, .28], [784, .55], [659, .55], [523, .55], [494, .55], [440, 1],
+      [698, .28], [698, .28], [659, .55], [523, .55], [587, .55], [523, 1]
+    ];
+    function playTone(frequency, start, length) {
+      const oscillator = audio.createOscillator();
+      const volume = audio.createGain();
+      oscillator.type = "sine";
+      oscillator.frequency.value = frequency;
+      volume.gain.setValueAtTime(.0001, start);
+      volume.gain.exponentialRampToValueAtTime(.13, start + .025);
+      volume.gain.setValueAtTime(.13, start + length * .72);
+      volume.gain.exponentialRampToValueAtTime(.0001, start + length);
+      oscillator.connect(volume).connect(audio.destination);
+      oscillator.start(start);
+      oscillator.stop(start + length + .02);
+    }
+    function stopMusic() {
+      timers.forEach(clearTimeout);
+      timers = [];
+      playing = false;
+      button.setAttribute("aria-pressed", "false");
+      buttonLabel.textContent = "Play birthday music";
+      note.textContent = "Go on, make a wish!";
+      if (audio) audio.close();
+      audio = null;
+    }
+    button.addEventListener("click", async () => {
+      if (playing) { stopMusic(); return; }
+      const AudioContext = window.AudioContext || window.webkitAudioContext;
+      if (!AudioContext) {
+        note.textContent = "Your browser does not support music playback.";
+        return;
+      }
+      audio = new AudioContext();
+      await audio.resume();
+      playing = true;
+      button.setAttribute("aria-pressed", "true");
+      buttonLabel.textContent = "Stop the music";
+      note.textContent = "♪ Happy birthday to you! ♪";
+      let time = audio.currentTime + .08;
+      for (const [frequency, duration] of melody) {
+        playTone(frequency, time, duration * .82);
+        time += duration;
+      }
+      timers.push(setTimeout(stopMusic, (time - audio.currentTime) * 1000 + 250));
+    });
+  </script>
+</body>
+</html>
